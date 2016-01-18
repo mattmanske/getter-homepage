@@ -1,0 +1,67 @@
+.container
+  text-align: center
+
+.visible-wrapper
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+
+  > .navbar
+    flex: 0 0 auto
+
+    img.logo
+      height: 1.25em
+
+    .nav-item a
+      font-size: 90% !important
+
+  > .jumbotron
+    color: white
+    flex: 1 0 100%
+    margin-bottom: 0
+    position: relative
+
+    .container
+      width: 100%
+      max-width: 100%
+      margin-top: -3em
+      @include center-align()
+
+      .hero-bubbles
+        width: 100%
+        max-width: 28em
+        margin-bottom: 3em
+
+      h1, p
+        letter-spacing: 0.033em
+        @include antialiased()
+
+      p
+        opacity: 0.75
+        font-size: 90%
+        margin: 1em 0 1.33em
+
+      .input-group
+        margin: auto
+        max-width: 32em
+
+        input
+          border: none
+
+      .btn
+        padding-left: 2em
+        border-left: 1px solid white
+
+      .btn-triangle
+        top: 0
+        left: -1px
+        width: 1rem
+        height: 100%
+        z-index: 10
+        position: absolute
+
+        svg
+          display: block
+
+        polygon
+          fill: white

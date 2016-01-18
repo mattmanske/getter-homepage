@@ -1,0 +1,90 @@
+---
+title: Welcome to Middleman
+---
+
+.visible-wrapper
+
+  //-----------  Navbar  -----------//
+
+  nav.navbar.navbar-full.navbar-dark.bg-inverse
+    a.navbar-brand
+      = image_tag 'logo.png', :class => 'logo'
+
+    ul.nav.navbar-nav.pull-xs-right
+      li.nav-item
+        a.nav-link href='#' Log in
+
+      li.nav-item
+        a.btn.btn-warning Start your free trial
+
+  //-----------  Jumbotron  -----------//
+
+  .jumbotron
+    .container
+      = image_tag 'hero-bubbles.png', :class => 'hero-bubbles'
+
+      h1.h2 Watch great email strategy evolve in real time
+      p The top brands are targeting, testing and getting more effective every day. Watch and learn.
+
+      .input-group
+        input.form-control type='text' placeholder='Your email'
+        .input-group-btn
+          .btn-triangle
+            svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none" width="100%" height="100%"
+              polygon points="0,0 100,50 0,100"
+          button.btn.btn-warning type='button' Start your free trial
+
+.hidden-wrapper
+
+  //-----------  First Section  -----------//
+
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        h3 Getter is like having 1000’s of unique people instantly analyzing every email the big brands send
+
+    .row
+      .col-md-4
+        h5 See who they're targeting
+        p Getter’s patent-pending AI technology reveals how email marketing differs across a variety of demographics, locations and personalities.
+
+      .col-md-4
+        h5 See what they're saying
+        p Getter tracks and saves every promotional and transactional email so you can see how messaging changes over time.
+
+      .col-md-4
+        h4 See when they're saying it
+        p Getter’s real-time monitoring gives you a look at popular send times, busy days and opportunities to break through the clutter.
+
+  //-----------  Second Section  -----------//
+
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        h6 Take what the top brands are learning and start creating more effective email marketing
+        .btn.btn-warning Start your free trial
+
+  //-----------  Third Section  -----------//
+
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .btn.btn-primary 13,234 emails collected and analyzed today
+
+  //-----------  Footer  -----------//
+
+  nav.navbar.navbar-full.bg-inverse
+    ul.nav.navbar-nav
+      li.nav-item
+        a.nav-link href='#' Plans
+      li.nav-item
+        a.nav-link href='#' Contact
+      li.nav-item
+        a.nav-link href='#' API
+      li.nav-item
+        a.nav-link href='#' Terms of Use
+      li.nav-item
+        a.nav-link href='#' Privacy Policy
+
+      li.nav-item.pull-xs-right
+        .nav-link @Getter 2016

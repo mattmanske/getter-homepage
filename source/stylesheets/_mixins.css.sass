@@ -1,0 +1,44 @@
+/*-----------  Decoration  -----------*/
+
+@mixin full-bg($url: '')
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center center
+  background-image: image-url($url)
+
+/*-----------  Type Effects  -----------*/
+
+@mixin ellipsis($width: 100%)
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+/*-----------  Vertical Alignment  -----------*/
+
+@mixin vertical-align($position: absolute)
+  top: 50%
+  position: $position
+  transform: translateY(-50%)
+
+/*-----------  Horizontal Alignment  -----------*/
+
+@mixin horizontal-align($position: absolute)
+  left: 50%
+  position: $position
+  transform: translateX(-50%)
+
+/*-----------  Center Alignment  -----------*/
+
+@mixin center-align($position: absolute)
+  top: 50%
+  left: 50%
+  position: $position
+  transform: translate(-50%, -50%)
+
+/*-----------  Weight Corrections  -----------*/
+
+@mixin antialiased($smooth: true)
+  @if $smooth
+    font-smoothing: antialiased
+  @else
+    font-smoothing: subpixel-antialiased
