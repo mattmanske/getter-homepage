@@ -54,20 +54,32 @@ title: Welcome to Middleman
 
     .container
       .row
-        .col-md-8.col-md-offset-2
+        .col-md-10.col-md-offset-1
           h3 Getter is like having 1000’s of unique people instantly analyzing every email the big brands send
 
       .row
         .col-md-4
-          h5 See who they're targeting
+          = image_tag 'who-graphic.png'
+          h5
+            | See
+            span who
+            | they're targeting
           p Getter’s patent-pending AI technology reveals how email marketing differs across a variety of demographics, locations and personalities.
 
         .col-md-4
-          h5 See what they're saying
+          = image_tag 'what-graphic.png'
+          h5
+            | See
+            span what
+            | they're saying
           p Getter tracks and saves every promotional and transactional email so you can see how messaging changes over time.
 
         .col-md-4
-          h4 See when they're saying it
+          = image_tag 'when-graphic.png'
+          h5
+            | See
+            span when
+            | they're saying it
           p Getter’s real-time monitoring gives you a look at popular send times, busy days and opportunities to break through the clutter.
 
   //-----------  Second Section  -----------//
@@ -79,7 +91,8 @@ title: Welcome to Middleman
 
     .container
       .row
-        .col-md-6.col-md-offset-3
+        .col-md-4.col-md-offset-4
+          = image_tag 'trial-graphic.png'
           h6 Take what the top brands are learning and start creating more effective email marketing
           .btn.btn-warning Start your free trial
 
@@ -91,6 +104,9 @@ title: Welcome to Middleman
   //-----------  Third Section  -----------//
 
   section#emails
+    - for  i in (1..8)
+      .bg-scroller style="background-image:url(#{image_path('mail-bg.png')})"
+    
     .container
       .row
         .col-md-6.col-md-offset-3
