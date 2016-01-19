@@ -4,9 +4,21 @@
 
 $ ->
 
-  $('.show-more-arrow').click (evt) ->
+  $clickArrow    = $('.show-more-arrow')
+  $hiddenSection = $('.hidden-wrapper')
+
+  # Show More
+
+  $clickArrow.click (evt) ->
     evt.preventDefault()
-    $('.hidden-wrapper').addClass('visible')
+    $(@).removeClass('visible')
+    $hiddenSection.addClass('visible')
     $('html, body').animate
       scrollTop: $('#marketing').offset().top
     , 750
+
+  # Show More
+
+  setTimeout ->
+    $clickArrow.addClass('visible')
+  , 500

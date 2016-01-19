@@ -1,12 +1,6 @@
 .container
   text-align: center
 
-// .hidden-wrapper
-//   display: none
-//
-//   &.visible
-//     display: block
-
 img
   width: 100%
   height: auto
@@ -85,12 +79,17 @@ img
   /*-----------  Show More Arrow  -----------*/
 
   .show-more-arrow
+    opacity: 0
+    bottom: -3rem
     color: white
-    opacity: 0.5
-    bottom: 4rem
+    position: fixed
     text-align: center
-    transition: all 0.25s ease-out
+    transition: opacity 0.25s ease-out, bottom 0.75s ease-in-out
     @include horizontal-align()
+
+    &.visible
+      bottom: 3rem
+      opacity: 0.5
 
     &:hover
       opacity: 1
@@ -113,7 +112,11 @@ img
 /*-----------  Hidden Wrapper  -----------*/
 
 .hidden-wrapper
+  display: none
   background-color: $brand-primary
+
+  &.visible
+    display: block
 
   section
     overflow: hidden
