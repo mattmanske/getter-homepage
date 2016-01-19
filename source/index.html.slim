@@ -14,13 +14,13 @@ title: Welcome to Middleman
       li.nav-item
         a.nav-link href='#' Log in
 
-      li.nav-item
+      li.nav-item.hidden-xs-down
         a.free-trial.btn.btn-warning Start your free trial
 
   //-----------  Jumbotron  -----------//
 
   .jumbotron
-    .container
+    .container-fluid
       = image_tag 'hero-bubbles.png', :class => 'hero-bubbles'
 
       h1.h2 Watch great email strategy evolve in real time
@@ -52,11 +52,11 @@ title: Welcome to Middleman
       svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none" width="100%" height="100%"
         path d="M0,0 L50,90 L100,0"
 
-    .container
+    .container-fluid
       h3 Getter is like having 1000’s of unique people instantly analyzing every email the big brands send
 
       .row
-        .col-md-4
+        .col-md-4.col-xs-12
           = image_tag 'who-graphic.png'
           h5
             | See
@@ -64,7 +64,7 @@ title: Welcome to Middleman
             | they're targeting
           p Getter’s patent-pending AI technology reveals how email marketing differs across a variety of demographics, locations and personalities.
 
-        .col-md-4
+        .col-md-4.col-xs-12
           = image_tag 'what-graphic.png'
           h5
             | See
@@ -72,7 +72,7 @@ title: Welcome to Middleman
             | they're saying
           p Getter tracks and saves every promotional and transactional email so you can see how messaging changes over time.
 
-        .col-md-4
+        .col-md-4.col-xs-12
           = image_tag 'when-graphic.png'
           h5
             | See
@@ -87,9 +87,9 @@ title: Welcome to Middleman
       svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none" width="100%" height="100%"
         path d="M0,0 L50,90 L100,0"
 
-    .container
+    .container-fluid
       .row
-        .col-md-4.col-md-offset-4
+        .col-md-4.col-md-offset-4.col-xs-12
           = image_tag 'trial-graphic.png'
           p Take what the top brands are learning and start creating more effective email marketing
           .free-trial.btn.btn-warning Start your free trial
@@ -105,8 +105,10 @@ title: Welcome to Middleman
     - for  i in (1..6)
       .bg-scroller style="background-image:url(#{image_path('mail-bg.png')})"
 
-    .container
-      .btn.btn-lg.btn-primary 13,234 emails collected and analyzed today
+    .container-fluid
+      .email-count.btn.btn-lg.btn-primary
+         span 13,234
+         |  emails collected and analyzed today
 
   //-----------  Footer  -----------//
 

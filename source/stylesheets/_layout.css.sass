@@ -1,4 +1,4 @@
-.container
+.container-fluid
   text-align: center
 
 img
@@ -37,7 +37,7 @@ button, .btn, a
     margin-bottom: 0
     position: relative
 
-    .container
+    .container-fluid
       width: 100%
       max-width: 100%
       margin-top: -3em
@@ -84,15 +84,17 @@ button, .btn, a
           stroke-width: 7
           stroke-linejoin: miter
 
-    .container
+    .container-fluid
       z-index: 100
-      padding: 8em 0
+      padding-top: 8em
+      padding-bottom: 8em
       position: relative
 
       .row > div
         text-align: center
 
         img
+          padding: 0 1rem
           max-width: 18em
           margin: 0 auto 2.5em
 
@@ -108,11 +110,13 @@ button, .btn, a
           stroke: $brand-info
 
       h3
+        padding: 0 1rem
         max-width: 30em
         margin: 0 auto 2em
 
       .row > div
-        padding: 0 1em
+        padding-top: 1em
+        padding-bottom: 1em
 
         p
           font-size: 90%
@@ -138,14 +142,14 @@ button, .btn, a
         &:last-child
           margin-bottom: -1px
 
-      .container
-
     /*-----------  Emails Section  -----------*/
 
     &#emails
       background-color: white
 
-      .btn
+      .email-count
+        white-space: normal
+        pointer-events: none
         box-shadow: 0 0 1em 0.33em rgb(255, 255, 255)
 
       &:before

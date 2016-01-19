@@ -40,7 +40,7 @@ $ ->
     evt.preventDefault()
     $hiddenSection.addClass('visible')
     $('html, body').animate(
-      scrollTop: scrollToCenter($('#marketing .container'))
+      scrollTop: scrollToCenter($('#marketing .container-fluid'))
     , 750)
 
   #-----------  Click to Free Trial  -----------#
