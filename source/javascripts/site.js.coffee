@@ -9,6 +9,25 @@ $ ->
   $clickArrow    = $('.show-more-arrow')
   $hiddenSection = $('.hidden-wrapper')
 
+  #-----------  Email AJAX Function  -----------#
+
+  sendUserEmail = -> return new Promise (fulfill, reject) ->
+    user_email = $emailBar.find('input').val()
+
+    # do stuff w/ the 'user_email' sting...
+
+    if (Math.random() >= 0.5)
+      # if has errors, send string via 'reject()' function
+      err_msg = "Whoops! #{user_email} Please try again"
+      setTimeout( ->
+        reject(err_msg)
+      , 2000)
+    else
+      # if no errors, call 'fulfill()' function
+      setTimeout( ->
+        fulfill()
+      , 2000)
+
   #-----------  Click to Show More  -----------#
 
   $clickArrow.click (evt) ->
@@ -29,8 +48,16 @@ $ ->
   $emailButton.click (evt) ->
     evt.preventDefault()
     $emailBar.toggleClass('sending')
-    $emailBar.find('input').prop('disabled', true)
+    $emailBar.find('input, .btn').prop('disabled', true)
 
-    setTimeout( ->
+    sendUserEmail().then( ->
+      console.log 'SUCCESS!'
       $emailBar.addClass('finished')
-    , 3000)
+    , (error_message) ->
+      console.log 'ERROR: ' + error_message
+      $emailBar.addClass('error')
+      setTimeout( ->
+        $emailBar.removeClass('sending error')
+        $emailBar.find('input, .btn').prop('disabled', false)
+      , 2000)
+    )

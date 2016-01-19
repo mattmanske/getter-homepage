@@ -20,6 +20,9 @@
     overflow: hidden
     padding-left: 2em
 
+    &:disabled
+      opacity: 1
+
     &:before,
     &:after
       opacity: 0
@@ -72,6 +75,29 @@
 
     .btn-triangle polygon
       fill: $input-bg-disabled
+
+  /*-----------  STATE: Error  -----------*/
+
+  &.error
+    pointer-events: none
+
+    input
+      flex: 0
+      padding: 0
+
+    .input-group-btn
+      flex: 1
+
+    .btn::before
+      background: $brand-danger
+
+    .btn::after
+      animation: none
+      content: 'Whoops! There\s been an error. Try again please'
+
+    .btn-triangle polygon
+      left: -1em
+      opacity: 0
 
   /*-----------  STATE: Finished  -----------*/
 
