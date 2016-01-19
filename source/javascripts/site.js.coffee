@@ -5,7 +5,8 @@
 $ ->
 
   $emailBar      = $('.email-bar')
-  $emailButton   = $('.email-bar .btn')
+  $emailBtn      = $('.email-bar button')
+  $freeTrialBtn  =
   $clickArrow    = $('.show-more-arrow')
   $hiddenSection = $('.hidden-wrapper')
 
@@ -18,14 +19,15 @@ $ ->
 
     if (Math.random() >= 0.5)
       # if has errors, send string via 'reject()' function
-      err_msg = "Whoops! #{user_email} Please try again"
+      message = "Whoops! #{user_email} Please try again"
       setTimeout( ->
-        reject(err_msg)
+        reject(message)
       , 2000)
     else
-      # if no errors, call 'fulfill()' function
+      # if no error, send string via 'fulfill()' function
+      message = "Thanks! We'll be in touch soon"
       setTimeout( ->
-        fulfill()
+        fulfill(message)
       , 2000)
 
   #-----------  Click to Show More  -----------#
@@ -50,14 +52,44 @@ $ ->
     $emailBar.toggleClass('sending')
     $emailBar.find('input, .btn').prop('disabled', true)
 
-    sendUserEmail().then( ->
-      console.log 'SUCCESS!'
+    revertState = ->
+      $emailBtn.attr('data-message', '')
+      $emailBar.removeClass('sending error finished')
+      $emailBar.find('input, .btn').prop('disabled', false)
+
+    sendUserEmail().then( (message) ->
       $emailBar.addClass('finished')
-    , (error_message) ->
-      console.log 'ERROR: ' + error_message
+      $emailBtn.attr('data-message', message)
+    , (message) ->
       $emailBar.addClass('error')
+      $emailBtn.attr('data-message', message)
       setTimeout( ->
-        $emailBar.removeClass('sending error')
-        $emailBar.find('input, .btn').prop('disabled', false)
-      , 2000)
+        revertState()
+      , 3000)
+    )
+
+  #-----------  Start Free Trial  -----------#
+
+  $emailButton.click (evt) ->
+    evt.preventDefault()
+    $emailBar.toggleClass('sending')
+    $emailBar.find('input, .btn').prop('disabled', true)
+
+    revertState = ->
+      $emailButton.attr('data-message', '')
+      $emailBar.removeClass('sending error finished')
+      $emailBar.find('input, .btn').prop('disabled', false)
+
+    sendUserEmail().then( (message) ->
+      $emailButton.attr('data-message', message)
+      $emailBar.addClass('finished')
+      console.log 'SUCCESS!', message
+    , (message) ->
+      $emailButton.attr('data-message', message)
+      $emailBar.addClass('error')
+      console.log 'ERROR: ' + message
+
+      setTimeout( ->
+        revertState()
+      , 3000)
     )

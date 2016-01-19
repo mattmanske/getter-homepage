@@ -76,9 +76,10 @@
     .btn-triangle polygon
       fill: $input-bg-disabled
 
-  /*-----------  STATE: Error  -----------*/
+  /*-----------  STATE: Error & Finished  -----------*/
 
-  &.error
+  &.error,
+  &.finished
     pointer-events: none
 
     input
@@ -93,34 +94,25 @@
 
     .btn::after
       animation: none
-      content: 'Whoops! There\s been an error. Try again please'
+      content: attr(data-message)
 
     .btn-triangle polygon
       left: -1em
       opacity: 0
+
+  /*-----------  STATE: Error  -----------*/
+
+  &.error
+
+    .btn::before
+      background: $brand-danger
 
   /*-----------  STATE: Finished  -----------*/
 
   &.finished
-    pointer-events: none
-
-    input
-      flex: 0
-      padding: 0
-
-    .input-group-btn
-      flex: 1
 
     .btn::before
       background: $brand-warning
-
-    .btn::after
-      animation: none
-      content: 'Thanks! We\'ll be in touch soon'
-
-    .btn-triangle polygon
-      left: -1em
-      opacity: 0
 
 /*-----------  Animation -----------*/
 

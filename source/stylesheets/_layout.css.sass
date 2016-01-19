@@ -13,6 +13,7 @@ button, .btn, a
 
 .visible-wrapper
   display: flex
+  overflow: hidden
   min-height: 100vh
   flex-direction: column
 
@@ -158,3 +159,12 @@ button, .btn, a
         position: absolute
         background: transparent
         background-image: linear-gradient(white, transparent)
+
+  /*-----------  Navbar  -----------*/
+
+  footer
+    font-size: 80% !important
+
+    .pull-xs-right .nav-link
+      pointer-events: none
+      color: lighten($gray-dark, 10%)
