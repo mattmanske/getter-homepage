@@ -6,9 +6,13 @@ $ ->
 
   $emailBar      = $('.email-bar')
   $emailBtn      = $('.email-bar button')
-  $freeTrialBtn  =
+  $freeTrialBtn  = $('.free-trial')
   $clickArrow    = $('.show-more-arrow')
   $hiddenSection = $('.hidden-wrapper')
+
+  setTimeout( ->
+    $clickArrow.addClass('visible')
+  , 500)
 
   #-----------  Email AJAX Function  -----------#
 
@@ -36,18 +40,24 @@ $ ->
     evt.preventDefault()
     $hiddenSection.addClass('visible')
     $('html, body').animate(
-      scrollTop: $('#marketing .container').offset().top
+      scrollTop: scrollToCenter($('#marketing .container'))
     , 750)
 
-  #-----------  Show More Hide/Show  -----------#
+  #-----------  Click to Free Trial  -----------#
 
-  setTimeout( ->
-    $clickArrow.addClass('visible')
-  , 500)
+  $freeTrialBtn.click (evt) ->
+    evt.preventDefault()
+    $emailBar.removeClass('blink')
+    $('html, body').animate(
+      scrollTop: scrollToCenter($emailBar)
+    , 750)
+    setTimeout( ->
+      $emailBar.addClass('blink')
+    , 900)
 
   #-----------  Email Animations  -----------#
 
-  $emailButton.click (evt) ->
+  $emailBtn.click (evt) ->
     evt.preventDefault()
     $emailBar.toggleClass('sending')
     $emailBar.find('input, .btn').prop('disabled', true)
@@ -68,28 +78,7 @@ $ ->
       , 3000)
     )
 
-  #-----------  Start Free Trial  -----------#
+#-----------  Helpers  -----------#
 
-  $emailButton.click (evt) ->
-    evt.preventDefault()
-    $emailBar.toggleClass('sending')
-    $emailBar.find('input, .btn').prop('disabled', true)
-
-    revertState = ->
-      $emailButton.attr('data-message', '')
-      $emailBar.removeClass('sending error finished')
-      $emailBar.find('input, .btn').prop('disabled', false)
-
-    sendUserEmail().then( (message) ->
-      $emailButton.attr('data-message', message)
-      $emailBar.addClass('finished')
-      console.log 'SUCCESS!', message
-    , (message) ->
-      $emailButton.attr('data-message', message)
-      $emailBar.addClass('error')
-      console.log 'ERROR: ' + message
-
-      setTimeout( ->
-        revertState()
-      , 3000)
-    )
+scrollToCenter = (object) ->
+  return object.offset().top - ( $(window).height() - object.outerHeight(true) ) / 2

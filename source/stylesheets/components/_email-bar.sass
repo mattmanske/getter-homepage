@@ -114,6 +114,13 @@
     .btn::before
       background: $brand-warning
 
+  /*-----------  STATE: Blink  -----------*/
+
+  &.blink
+    animation-name: pulse
+    animation-duration: 0.33s
+    animation-iteration-count: 2
+
 /*-----------  Animation -----------*/
 
 @keyframes pulse
