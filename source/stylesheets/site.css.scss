@@ -61,6 +61,10 @@
 
 //-----------  Project Overrides  -----------//
 
-@import 'layout'
+@import 'layout';
 
-//-----------  Project Specifics  -----------//
+//-----------  Project Components  -----------//
+
+@import 'components/email-bar';
+@import 'components/show-more';
+@import 'components/scrolling-bg';

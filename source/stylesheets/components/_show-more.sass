@@ -1,0 +1,32 @@
+/*-----------  Show More Arrow  -----------*/
+
+.show-more-arrow
+  opacity: 0
+  bottom: -3rem
+  color: white
+  position: absolute
+  text-align: center
+  transition: opacity 0.25s ease-out, bottom 0.75s ease-in-out
+  @include horizontal-align()
+
+  &.visible
+    bottom: 3rem
+    opacity: 0.5
+
+  &:hover
+    opacity: 1
+    cursor: pointer
+
+  .icon-down
+    width: 2em
+    height: 0.67em
+    margin: 0 auto
+    display: block
+
+  svg
+    background: transparent
+
+    path
+      stroke: white
+      stroke-width: 2
+      fill: transparent

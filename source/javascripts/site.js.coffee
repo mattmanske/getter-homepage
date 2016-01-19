@@ -4,21 +4,33 @@
 
 $ ->
 
+  $emailBar      = $('.email-bar')
+  $emailButton   = $('.email-bar .btn')
   $clickArrow    = $('.show-more-arrow')
   $hiddenSection = $('.hidden-wrapper')
 
-  # Show More
+  #-----------  Click to Show More  -----------#
 
   $clickArrow.click (evt) ->
     evt.preventDefault()
-    $(@).removeClass('visible')
     $hiddenSection.addClass('visible')
-    $('html, body').animate
-      scrollTop: $('#marketing').offset().top
-    , 750
+    $('html, body').animate(
+      scrollTop: $('#marketing .container').offset().top
+    , 750)
 
-  # Show More
+  #-----------  Show More Hide/Show  -----------#
 
-  setTimeout ->
+  setTimeout( ->
     $clickArrow.addClass('visible')
-  , 500
+  , 500)
+
+  #-----------  Email Animations  -----------#
+
+  $emailButton.click (evt) ->
+    evt.preventDefault()
+    $emailBar.toggleClass('sending')
+    $emailBar.find('input').prop('disabled', true)
+
+    setTimeout( ->
+      $emailBar.addClass('finished')
+    , 3000)
