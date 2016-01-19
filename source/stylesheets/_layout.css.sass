@@ -135,12 +135,16 @@ img
           stroke-linejoin: miter
 
     .container
+      z-index: 100
       padding: 8em 0
+      position: relative
 
       .row > div
+        text-align: center
 
         img
-          margin-bottom: 1.5em
+          max-width: 18em
+          margin: 0 auto 2.5em
 
     /*-----------  Marketing Section  -----------*/
 
@@ -153,9 +157,18 @@ img
           fill: $brand-primary
           stroke: $brand-info
 
+      h3
+        max-width: 30em
+        margin: 0 auto 2em
+
       .row > div
-        padding-left: 2em
-        padding-right: 2em
+        padding: 0 1em
+
+        p
+          font-size: 90%
+          max-width: 16em
+          margin: 1em auto 0
+          color: $brand-primary
 
         span
           margin: 0 0.25em
@@ -164,6 +177,7 @@ img
     /*-----------  Trial Section  -----------*/
 
     &#trial
+      color: white
 
       .section-spacer
 
@@ -174,6 +188,8 @@ img
         &:last-child
           margin-bottom: -1px
 
+      .container
+
     /*-----------  Emails Section  -----------*/
 
     &#emails
@@ -182,8 +198,8 @@ img
       .btn
         box-shadow: 0 0 1em 0.33em rgb(255, 255, 255)
 
-      &:before
-        top: 0
+      &:before,
+      &:after
         left: 0
         width: 100%
         height: 3em
@@ -192,11 +208,18 @@ img
         display: block
         position: absolute
         background: transparent
+
+      &:before
+        top: 0
         background-image: linear-gradient(white, transparent)
+
+      &:after
+        bottom: 0
+        background-image: linear-gradient(transparent, white)
 
       /*-----------  Scrolling BG  -----------*/
 
-      $x-spacer: 30
+      $x-spacer: 25
       $y-spacer: 50
 
       .bg-scroller
@@ -207,16 +230,16 @@ img
         z-index: 0
         position: absolute
 
-      @for $i from 1 through 8
+      @for $i from 1 through 6
         $x-offset: $x-spacer * $i
         $y-offset: $y-spacer * $i
-        $time-offset: random(30) / 10
+        $time-offset: (random(35) + 15) / 10
 
         @keyframes animatedBackground#{$i}
           from
             background-position: unquote($x-offset+'px') unquote($y-offset+'px')
           to
-            background-position: unquote($x-offset+'px') unquote(($y-offset + ($y-spacer * 4))+'px')
+            background-position: unquote($x-offset+'px') unquote(($y-offset + ($y-spacer * 2))+'px')
 
         .bg-scroller:nth-child(#{$i})
           animation: animatedBackground#{$i} unquote($time-offset+'s') linear infinite
