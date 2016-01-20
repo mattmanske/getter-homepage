@@ -1,9 +1,5 @@
 require 'slim'
 
-configure :development do
-  activate :livereload
-end
-
 # GH-Pages deployment configuration
 activate :deploy do |deploy|
   deploy.method = :git
