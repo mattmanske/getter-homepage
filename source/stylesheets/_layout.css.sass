@@ -1,5 +1,6 @@
 .container-fluid
   text-align: center
+  @include make-container-max-widths()
 
 img
   width: 100%
@@ -15,6 +16,7 @@ button, .btn, a
   display: flex
   overflow: hidden
   min-height: 100vh
+  position: relative
   flex-direction: column
 
   /*-----------  Navbar  -----------*/
@@ -28,6 +30,10 @@ button, .btn, a
 
     .nav-item a
       font-size: 90% !important
+
+    @include media-breakpoint-down(xs)
+      padding-top: 0.5em
+      padding-bottom: 0.5em
 
   /*-----------  Hero  -----------*/
 
@@ -172,3 +178,18 @@ button, .btn, a
     .pull-xs-right .nav-link
       pointer-events: none
       color: lighten($gray-dark, 10%)
+
+    @include media-breakpoint-down(xs)
+
+      ul
+        margin: 0
+        padding: 0
+
+        li
+          display: block
+          text-align: center
+          float: none !important
+          margin-left: 0 !important
+
+          & + li
+            margin-top: 0.15em

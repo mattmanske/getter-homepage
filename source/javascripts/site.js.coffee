@@ -9,10 +9,8 @@ $ ->
   $freeTrialBtn  = $('.free-trial')
   $clickArrow    = $('.show-more-arrow')
   $hiddenSection = $('.hidden-wrapper')
-
-  setTimeout( ->
-    $clickArrow.addClass('visible')
-  , 500)
+  $jumbotron     = $('.jumbotron')
+  $heroSection   = $('.jumbotron .container-fluid')
 
   #-----------  Email AJAX Function  -----------#
 
@@ -34,23 +32,37 @@ $ ->
         fulfill(message)
       , 2000)
 
+  #-----------  Resize Hero Section  -----------#
+
+  resizeHero = ->
+    height = $heroSection.height()
+    $jumbotron.css({minHeight: height + 180 + 'px'})
+
+  $(window).on('resize', resizeHero)
+  resizeHero()
+
   #-----------  Click to Show More  -----------#
 
   $clickArrow.click (evt) ->
     evt.preventDefault()
     $hiddenSection.addClass('visible')
-    $('html, body').animate(
-      scrollTop: scrollToCenter($('#marketing .container-fluid'))
-    , 750)
+
+    scrollHeight = $('#marketing .container-fluid').offset().top
+    $('html, body').animate(scrollTop: scrollHeight, 750)
+
+  setTimeout( ->
+    $clickArrow.addClass('visible')
+  , 500)
 
   #-----------  Click to Free Trial  -----------#
 
   $freeTrialBtn.click (evt) ->
     evt.preventDefault()
     $emailBar.removeClass('blink')
-    $('html, body').animate(
-      scrollTop: scrollToCenter($emailBar)
-    , 750)
+
+    scrollHeight = $emailBar.offset().top - ( $(window).height() - $emailBar.outerHeight(true) ) / 2
+    $('html, body').animate(scrollTop: scrollHeight, 750)
+
     setTimeout( ->
       $emailBar.addClass('blink')
     , 900)
@@ -73,12 +85,8 @@ $ ->
     , (message) ->
       $emailBar.addClass('error')
       $emailBtn.attr('data-message', message)
+
       setTimeout( ->
         revertState()
       , 3000)
     )
-
-#-----------  Helpers  -----------#
-
-scrollToCenter = (object) ->
-  return object.offset().top - ( $(window).height() - object.outerHeight(true) ) / 2
